@@ -1,0 +1,41 @@
+:root {
+    --md-sys-color-primary: olive;
+    --md-sys-color-secondary: green; 
+    --md-ref-typeface-brand: 'Google Sans';
+    --md-ref-typeface-plain: system-ui;
+  }
+*{
+--webkit-tap-highlight-color: rgb(0, 0, 0, 0);
+} 
+.filled, .elevated, .outlined{
+padding: 20px 20px;
+margin: 10px;
+background-color: color-mix(in srgb, var(--md-sys-color-primary) 30%, white 70%);
+border-radius: 20px;
+font-family: var(--md-ref-typeface-brand);
+font-weight: 400;
+box-shadow: 0px 0px 0px #000000;
+text-align: center;
+}
+*md-filled-icon-button{
+text-align: left;
+} 
+.elevated{
+background-color: color-mix(in srgb, var(--md-sys-color-primary) 10%, white 90%);
+box-shadow: 0px 0px 5px #00000070;
+}
+.outlined{
+background-color: color-mix(in srgb, var(--md-sys-color-primary) 10%, white 90%);
+border: 1px solid #999;
+}
+
+.title1{
+font-size: 60px;
+text-align: left;
+width: fit-content;
+display: flex;
+margin: 0 auto;
+} 
+*{
+    transition: 0.1s ease-in-out;
+}
