@@ -1,3 +1,4 @@
+//let flipX = false;
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('h1[id], h2[id], h3[id]').forEach(heading => {
     if (!heading.querySelector('.anch')) {
@@ -9,14 +10,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
-let flipX = false;
-document.getElementById('flipX').addEventListener("change", function() {
-  if (this.checked) {
-    flipX = true;
-  } else {
-    flipX = false;
-  }
-});
+
+//document.getElementById('flipX').addEventListener("change", function() {
+//  if (this.checked) {
+//    flipX = true;
+//  } else {
+//    flipX = false;
+//  }
+//});
 // Глобальные переменные для alt+tab
 let altTabGestureActive = false;
 let altTabGestureStartTime = null;
@@ -148,14 +149,14 @@ hands.onResults((results) => {
     const mizinFinger = landmarks[20];
 
     const relativeXClick = mainPoint.x;
-    // инвертирование по x
-    if (flipX == true){
-      const relativeXClick = 1 - mainPoint.x;
-    } else {
-      const relativeXClick = mainPoint.x;
-    }
-    // апдейт
-
+    //// инвертирование по x
+    //if (flipX == true){
+    //  const relativeXClick = 1 - mainPoint.x;
+    //} else {
+    //  const relativeXClick = mainPoint.x;
+    //}
+    //// апдейт
+    
     
     const relativeYClick = mainPoint.y;
     const absoluteXClick = relativeXClick * window.innerWidth;
