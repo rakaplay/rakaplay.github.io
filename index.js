@@ -146,6 +146,8 @@ hands.onResults((results) => {
     const bezymFinger = landmarks[16];
     const mainPoint = landmarks[1];
     const mizinFinger = landmarks[20];
+
+    const relativeXClick = mainPoint.x;
     // инвертирование по x
     if (flipX === true){
       const relativeXClick = 1 - mainPoint.x;
