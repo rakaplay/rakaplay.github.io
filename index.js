@@ -9,7 +9,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
-
+// axis
+document.getElementById('flipXAxis').addEventListener("change", function() {
+  if (this.checked) {
+    flipX = true;
+  } else {
+    flipX = false;
+  }
+});
 // Глобальные переменные для alt+tab
 let altTabGestureActive = false;
 let altTabGestureStartTime = null;
@@ -139,8 +146,15 @@ hands.onResults((results) => {
     const bezymFinger = landmarks[16];
     const mainPoint = landmarks[1];
     const mizinFinger = landmarks[20];
+    // инвертирование по x
+    if (flipX === true){
+      const relativeXClick = 1 - mainPoint.x;
+    } else {
+      const relativeXClick = mainPoint.x;
+    }
+    // апдейт
 
-    const relativeXClick = 1 - mainPoint.x;
+    
     const relativeYClick = mainPoint.y;
     const absoluteXClick = relativeXClick * window.innerWidth;
     const absoluteYClick = relativeYClick * window.innerHeight;
