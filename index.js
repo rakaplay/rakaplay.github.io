@@ -140,7 +140,7 @@ hands.onResults((results) => {
     const mainPoint = landmarks[1];
     const mizinFinger = landmarks[20];
 
-    const relativeXClick = 1 - mainPoint.x;
+    const relativeXClick = mainPoint.x;
     const relativeYClick = mainPoint.y;
     const absoluteXClick = relativeXClick * window.innerWidth;
     const absoluteYClick = relativeYClick * window.innerHeight;
