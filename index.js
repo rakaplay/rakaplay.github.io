@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
-// axis
+
 document.getElementById('flipXAxis').addEventListener("change", function() {
   if (this.checked) {
     flipX = true;
