@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 let flipX = false;
-document.getElementById('flipXAxis').addEventListener("change", function() {
+document.getElementById('flipX').addEventListener("change", function() {
   if (this.checked) {
     flipX = true;
   } else {
@@ -149,7 +149,7 @@ hands.onResults((results) => {
 
     const relativeXClick = mainPoint.x;
     // инвертирование по x
-    if (flipX === true){
+    if (flipX == true){
       const relativeXClick = 1 - mainPoint.x;
     } else {
       const relativeXClick = mainPoint.x;
