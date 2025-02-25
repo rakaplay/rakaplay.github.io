@@ -127,9 +127,14 @@ hands.onResults((results) => {
   // Если flipX включён, разворачиваем изображение
   if (document.getElementById("flipX").selected) {
     // Зеркальное отражение по горизонтали
-    canvas_risovka.scale(-1, 1);
+    canvas_risovka.scale(1, 1);
     // Сдвигаем начало координат, чтобы изображение осталось в пределах канваса
     canvas_risovka.translate(-canvas_element.width, 0);
+  } else {
+    // Зеркальное отражение по горизонтали
+    canvas_risovka.scale(-1, 1);
+    // Сдвигаем начало координат, чтобы изображение осталось в пределах канваса
+    canvas_risovka.translate(canvas_element.width, 0);
   }
   if (results.multiHandLandmarks && results.multiHandLandmarks.length > 0) {
     if (cameraActive) {
