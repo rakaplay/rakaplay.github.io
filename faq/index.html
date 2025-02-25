@@ -190,19 +190,11 @@
   </style>
 </head>
 <body>
-  <!-- Верхняя панель -->
-  <md-top-app-bar-fixed>
-    <md-top-app-bar slot="top-app-bar" headline="Инструкция и FAQ">
-      <div class="card outlined_card" onClick="window.location.href = 'https://google.com'">
-        <md-icon style="color: #fff">home</md-icon>
-      </div>
-      <md-outlined-button>FAQ (вы здесь)</md-outlined-button>
-    </md-top-app-bar>
-  </md-top-app-bar-fixed>
+
 
   <!-- Основной контент -->
   <main>
-
+    <md-outlined-button onclick="window.history.back()">FAQ (вы здесь)</md-outlined-button>
 
     <div class="card outlined_card">
       <h1 id="main_title">FAQ (ЧЗВ), часто задаваемые вопросы</h1>
