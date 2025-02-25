@@ -125,7 +125,7 @@ hands.onResults((results) => {
   canvas_risovka.clearRect(0, 0, canvas_element.width, canvas_element.height);
   canvas_risovka.drawImage(video_element, 0, 0, canvas_element.width, canvas_element.height);
   // Если flipX включён, разворачиваем изображение
-  if (flipX) {
+  if (document.getElementById("flipX").selected) {
     // Зеркальное отражение по горизонтали
     canvas_risovka.scale(-1, 1);
     // Сдвигаем начало координат, чтобы изображение осталось в пределах канваса
