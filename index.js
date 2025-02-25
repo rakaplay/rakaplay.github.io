@@ -124,18 +124,7 @@ hands.setOptions({
 hands.onResults((results) => {
   canvas_risovka.clearRect(0, 0, canvas_element.width, canvas_element.height);
   canvas_risovka.drawImage(video_element, 0, 0, canvas_element.width, canvas_element.height);
-  // Если flipX включён, разворачиваем изображение
-  if (document.getElementById("flipX").selected) {
-    // Зеркальное отражение по горизонтали
-    canvas_risovka.scale(1, 1);
-    // Сдвигаем начало координат, чтобы изображение осталось в пределах канваса
-    canvas_risovka.translate(-canvas_element.width, 0);
-  } else {
-    // Зеркальное отражение по горизонтали
-    canvas_risovka.scale(-1, 1);
-    // Сдвигаем начало координат, чтобы изображение осталось в пределах канваса
-    canvas_risovka.translate(canvas_element.width, 0);
-  }
+
   if (results.multiHandLandmarks && results.multiHandLandmarks.length > 0) {
     if (cameraActive) {
       status.innerText = "Рука распознана";

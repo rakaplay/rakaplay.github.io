@@ -264,40 +264,18 @@
       </div>
     </div>
 
+
     <!-- Карточка установки (содержимое как и раньше) -->
     <div class="card outlined_card" id="installation">
       <h1 id="installation-title">Инструкция по установке</h1>
-      <h2 id="step1">Шаг 1: Установка Python</h2>
+      <h2 id="step1">Шаг 1. Запуск сервера</h2>
       <ol>
-        <li>Перейдите на сайт <a href="https://www.python.org/downloads/">python.org/downloads</a> и скачайте последнюю версию Python для вашей ОС.</li>
-        <li>Запустите установщик и <strong>обязательно</strong> поставьте галочку "Add Python to PATH".</li>
-        <li>Следуйте инструкциям на экране.</li>
+        <li>Зайдите на <a href="https://github.com/rakaplay/pc-gesture-control/tree/releases">GitHub</a></li>
+        <li>Скачайте <a  href="https://github.com/rakaplay/pc-gesture-control/raw/refs/heads/releases/server-ui.exe" target="_blank">server-ui.exe и нажмите "Подключиться" в интерфейсе скачанной программы.</a></li>
+        <li>Потом откройте <a  href="https://rakaplay.github.io" target="_blank">страницу проекта (назад)</a> и разрешите досутп к камере</li>
+        <li>Все!</li>
       </ol>
-      
-      <h2 id="step2">Шаг 2: Проверка и установка pip</h2>
-      <ol>
-        <li>Откройте командную строку (или терминал) и введите: <pre>pip --version</pre></li>
-        <li>Если pip не установлен, выполните: <pre>python -m ensurepip --upgrade</pre></li>
-      </ol>
-      
-      <h2 id="step3">Шаг 3: Установка необходимых библиотек</h2>
-      <p>В командной строке или терминале выполните:</p>
-      <pre>pip install pyautogui opencv-python kivy mediapipe</pre>
-      
-      <h2 id="step4">Шаг 4: Создание .exe файла (Windows). В будущем будет убрано!</h2>
-      <ol>
-        <li>Установите pyinstaller: <pre>pip install pyinstaller</pre></li>
-        <li>Перейдите в папку с проектом и выполните: <pre>pyinstaller --onefile script_name.py</pre></li>
-        <li>Готовый .exe файл появится в папке под названием <b>dist</b>.</li>
-      </ol>
-      
-      <h2 id="step5">Шаг 5: Запуск программы</h2>
-      <ol>
-        <li>Если это .exe файл, откройте его.</li>
-        <li>Если это Python-скрипт, запустите его через командную строку: <pre>python script_name.py</pre></li>
-      </ol>
-      
-
+    
     </div>
 
     <!-- Карточка с проблемами и решениями (аналогично) -->
