@@ -230,3 +230,7 @@ md-switch {
 md-switch:hover {
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
 }
+
+.beautify-content{
+  display: flex; gap: 16px; justify-content: center; text-align:center; vertical-align:middle;
+}
