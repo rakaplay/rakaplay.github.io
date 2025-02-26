@@ -141,7 +141,7 @@ hands.onResults((results) => {
     let mainPoint = landmarks[1];
     let mizinFinger = landmarks[20];
     let relativeXClick = mainPoint.x;
-    const relativeYClick = mainPoint.y;
+    let relativeYClick = mainPoint.y;
     if (document.getElementById("flipX").selected){
      relativeXClick = 1 - mainPoint.x;
     } else {
