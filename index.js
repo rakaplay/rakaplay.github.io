@@ -152,7 +152,7 @@ hands.onResults((results) => {
      } else {
       relativeYClick = mainPoint.y;
     }
-
+    document.getElementById("finger_position").text = "Коорды: " + relativeXClick + " " + relativeYClick
     const absoluteXClick = relativeXClick * window.innerWidth;
     const absoluteYClick = relativeYClick * window.innerHeight;
 
