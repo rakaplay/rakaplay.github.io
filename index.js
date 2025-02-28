@@ -152,7 +152,7 @@ hands.onResults((results) => {
      } else {
       relativeYClick = mainPoint.y;
     }
-    document.getElementById("finger_position").innerText = "Коорды: " + relativeXClick + " " + relativeYClick
+    
     const absoluteXClick = relativeXClick * window.innerWidth;
     const absoluteYClick = relativeYClick * window.innerHeight;
 
@@ -191,7 +191,7 @@ hands.onResults((results) => {
         (indexFinger.x - thumb.x) * canvas_element.width,
         (indexFinger.y - thumb.y) * canvas_element.height
       );
-      if (distance < 18) {
+      if (distance < 20) {
         click_flag = true;
         pointer.style.transform = `translate(${absoluteXClick - pointer.offsetWidth / 2}px, ${absoluteYClick - pointer.offsetHeight / 2}px)`;
         pointer.style.display = "block";
@@ -216,7 +216,7 @@ hands.onResults((results) => {
         (thumb.x - bezymFinger.x) * canvas_element.width,
         (thumb.y - bezymFinger.y) * canvas_element.height
       );
-      if (rightClickDistance < 18) {
+      if (rightClickDistance < 20) {
         right_click_flag = true;
         pointer.style.transform = `translate(${absoluteXClick - pointer.offsetWidth / 2}px, ${absoluteYClick - pointer.offsetHeight / 2}px)`;
         pointer.style.display = "block";
@@ -283,4 +283,26 @@ hands.onResults((results) => {
     pointer.style.display = "none";
     scrollPointer.style.display = "none";
   }
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  const themeToggler = document.getElementById('theme-toggler');
+
+  // Загружаем сохраненную тему из localStorage
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme === 'dark') {
+    document.body.classList.add('dark-theme');
+    themeToggler.selected = true;
+  }
+
+  // Переключаем тему при изменении состояния переключателя
+  themeToggler.addEventListener('change', () => {
+    if (themeToggler.selected) {
+      document.body.classList.add('dark-theme');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      document.body.classList.remove('dark-theme');
+      localStorage.setItem('theme', 'light');
+    }
+  });
 });
