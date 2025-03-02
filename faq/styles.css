@@ -1,41 +1,165 @@
-:root {
-    --md-sys-color-primary: olive;
-    --md-sys-color-secondary: green; 
-    --md-ref-typeface-brand: 'Roboto';
-    --md-ref-typeface-plain: system-ui;
-  }
-*{
---webkit-tap-highlight-color: rgb(0, 0, 0, 0);
-} 
-.filled, .elevated, .outlined{
-padding: 20px 20px;
-margin: 10px;
-background-color: color-mix(in srgb, var(--md-sys-color-primary) 30%, white 70%);
-border-radius: 20px;
-font-family: var(--md-ref-typeface-brand);
-font-weight: 400;
-box-shadow: 0px 0px 0px #000000;
-text-align: center;
-}
-*md-filled-icon-button{
-text-align: left;
-} 
-.elevated{
-background-color: color-mix(in srgb, var(--md-sys-color-primary) 10%, white 90%);
-box-shadow: 0px 0px 5px #00000070;
-}
-.outlined{
-background-color: color-mix(in srgb, var(--md-sys-color-primary) 10%, white 90%);
-border: 1px solid #999;
+/* Плавный скролл с учетом фиксированной панели */
+html {
+  scroll-behavior: smooth;
 }
 
-.title1{
-font-size: 60px;
-text-align: left;
-width: fit-content;
-display: flex;
-margin: 0 auto;
-} 
-*{
-    transition: 0.1s ease-in-out;
+* {
+  -webkit-tap-highlight-color: transparent;
+  transition: all 0.3s ease;
+}
+body {
+  margin: 0;
+  font-family: var(--md-ref-typeface-plain);
+  background: linear-gradient(135deg, #f9f9f9, #ffffff);
+}
+
+/* Верхняя панель */
+md-top-app-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  backdrop-filter: blur(10px);
+}
+main {
+  padding: 120px 20px 40px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+/* Поисковая панель *
+/* Меню навигации */
+.menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+.menu a {
+  font-size: 1.2em;
+  color: var(--md-sys-color-primary);
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 10px;
+}
+.menu a:hover {
+  background-color: var(--md-sys-color-primary);
+  color: #fff;
+}
+/* Карточки */
+.card {
+  padding: 25px;
+  margin: 25px 0;
+  border-radius: 15px;
+  text-align: left;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  background-color: #fff;
+}
+.filled_card {
+  background-color: color-mix(in srgb, var(--md-sys-color-primary) 30%, white 70%);
+  margin: 10px 0;
+  border-radius: 12px;
+  padding: 15px;
+}
+.elevated_card {
+  background-color: color-mix(in srgb, var(--md-sys-color-primary) 10%, white 90%);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+  border-radius: 12px;
+}
+.outlined_card {
+  background-color: color-mix(in srgb, var(--md-sys-color-primary) 10%, white 90%);
+  border: 1px solid #999;
+  border-radius: 12px;
+}
+/* Заголовки с отступом для фикс. панели */
+h1, h2, h3 {
+  margin-top: 0;
+  font-family: var(--md-ref-typeface-brand);
+  position: relative;
+  scroll-margin-top: 120px;
+}
+h1 {
+  font-weight: 400;
+  font-size: 2.2em;
+  margin-bottom: 10px;
+}
+h2 {
+  font-weight: 300;
+  font-size: 1.6em;
+  margin-bottom: 8px;
+}
+p, li {
+  font-size: 1em;
+  line-height: 1.6em;
+}
+ul {
+  padding-left: 25px;
+}
+a {
+  color: var(--md-sys-color-secondary);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+pre {
+  background: #353030;
+  border-radius: 8px;
+  color: #ffffff;
+  padding: 12px;
+  overflow-x: auto;
+  font-family: monospace;
+}
+footer {
+  text-align: center;
+  padding: 25px;
+  font-size: 0.9em;
+  color: #555;
+  border-top: 1px solid #eee;
+  margin-top: 40px;
+}
+:root {
+  --md-sys-color-primary: olive;
+  --md-sys-color-secondary: tomato; 
+  --md-ref-typeface-brand: 'Roboto';
+  --md-ref-typeface-plain: system-ui, sans-serif;
+}
+.highlight {
+  background-color: rgba(255, 235, 59, 0.5);
+  border-radius: 3px;
+}
+.anch {
+  opacity: 0;
+  font-size: 0.8em;
+  margin-left: 8px;
+  color: var(--md-sys-color-secondary);
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+h1:hover .anch,
+h2:hover .anch,
+h3:hover .anch {
+  opacity: 1;
+}
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+}
+  md-top-app-bar{
+      padding: 20px;
+  }
+  *{
+      transition: 0.1s easeIn;
+  }
+#main_title{
+  text-align: center;
+  font-size: 40pt;
+}
+md-filled-button{
+  vertical-align: middle;
+}
+span{
+  vertical-align: baseline;
 }
