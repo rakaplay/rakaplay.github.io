@@ -294,7 +294,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const savedTheme = localStorage.getItem('theme');
     document.body.classList.add('dark-theme');
     themeToggler.selected = true;
-  
+  document.body.classList.add('dark-theme');
+  localStorage.setItem('theme', 'dark');
 
   // Переключаем тему при изменении состояния переключателя
   themeToggler.addEventListener('change', () => {
