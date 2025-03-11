@@ -298,13 +298,13 @@ document.addEventListener('DOMContentLoaded', () => {
   localStorage.setItem('theme', 'dark');
 
   // Переключаем тему при изменении состояния переключателя
-  themeToggler.addEventListener('change', () => {
-    if (themeToggler.selected) {
-      document.body.classList.add('dark-theme');
-      localStorage.setItem('theme', 'dark');
-    } else {
-      document.body.classList.remove('dark-theme');
-      localStorage.setItem('theme', 'light');
-    }
-  });
+// themeToggler.addEventListener('change', () => {
+//   if (themeToggler.selected) {
+//     document.body.classList.add('dark-theme');
+//     localStorage.setItem('theme', 'dark');
+//   } else {
+//     document.body.classList.remove('dark-theme');
+//     localStorage.setItem('theme', 'light');
+//   }
+// });
 });
