@@ -292,10 +292,9 @@ document.addEventListener('DOMContentLoaded', () => {
   themeToggler.selected = true;
   // Загружаем сохраненную тему из localStorage
   const savedTheme = localStorage.getItem('theme');
-  if (savedTheme === 'dark') {
     document.body.classList.add('dark-theme');
     themeToggler.selected = true;
-  }
+  
 
   // Переключаем тему при изменении состояния переключателя
   themeToggler.addEventListener('change', () => {
