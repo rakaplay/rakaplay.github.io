@@ -334,3 +334,25 @@ body.dark-theme md-filled-button[disabled] {
   --md-filled-button-disabled-container-color: #555; 
   --md-filled-button-disabled-label-text-color: #aaa; 
 }
+.animated-gradient-bg{
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+z-index: -1;
+pointer-events: none;
+overflow: hidden;
+opacity: 1;
+
+--background: #FFF;
+--dark-bg:  radial-gradient(circle at 10% 90%, rgba(255, 65, 65, 0.189), transparent 90%),
+radial-gradient(circle at 90% 10%, rgba(0, 0, 0, 0.488), transparent 90%),
+radial-gradient(circle at 20% 80%, rgba(110, 153, 109, 0.592), transparent 90%),
+radial-gradient(circle at 20% 80%, rgba(62, 255, 165, 0.3), transparent 90%);
+background: var(--dark-bg);
+}
+
+footer{
+background-color: inherit;
+}

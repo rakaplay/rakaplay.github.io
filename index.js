@@ -287,8 +287,9 @@ hands.onResults((results) => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
+  
   const themeToggler = document.getElementById('theme-toggler');
-
+  themeToggler.selected = true;
   // Загружаем сохраненную тему из localStorage
   const savedTheme = localStorage.getItem('theme');
   if (savedTheme === 'dark') {
