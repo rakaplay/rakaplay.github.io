@@ -1,4 +1,5 @@
 let flipX = true;
+document.getElementById("flipX").checked = true;
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('h1[id], h2[id], h3[id]').forEach(heading => {
     if (!heading.querySelector('.anch')) {
@@ -143,12 +144,23 @@ hands.onResults((results) => {
     let mizinFinger = landmarks[20];
     let relativeXClick = mainPoint.x;
     let relativeYClick = mainPoint.y;
-    if (document.getElementById("flipX").selected){
+    let allowedDistance = true;
+    console.log(mainPoint.z);
+    
+    let meterFactor = 200;
+    let maxDistance = document.getElementById("work-distance").value / 100; // Переводим в метры
+    
+    if (Math.abs(mainPoint.z) * meterFactor > maxDistance) {
+        allowedDistance = false;
+    } else {
+        allowedDistance = true;
+    }
+    if (document.getElementById("flipX").checked){
      relativeXClick = 1 - mainPoint.x;
     } else {
      relativeXClick = mainPoint.x;
     }
-    if (document.getElementById("flipY").selected){
+    if (document.getElementById("flipY").checked){
       relativeYClick = 1 - mainPoint.y;
      } else {
       relativeYClick = mainPoint.y;
@@ -171,7 +183,7 @@ hands.onResults((results) => {
         (scrollMiddleFinger.x - scrollIndexFinger.x) * canvas_element.width,
         (scrollMiddleFinger.y - scrollIndexFinger.y) * canvas_element.height
       );
-      if (scrollDistance < 18) {
+      if (scrollDistance < 23) {
         scrollFlag = true;
         scrollPointer.style.transform = `translate(${absoluteXClick - scrollPointer.offsetWidth / 2}px, ${absoluteYClick - scrollPointer.offsetHeight / 2}px)`;
         scrollPointer.style.display = "block";
@@ -227,9 +239,9 @@ hands.onResults((results) => {
     if (socket.readyState === WebSocket.OPEN) {
       if (!prev_abs_x || Math.abs(absoluteXClick - prev_abs_x) > threshold || Math.abs(absoluteYClick - prev_abs_y) > threshold) {
         if (scrollFlag) {
-          socket.send(JSON.stringify({ scroll: true, scrollY: relativeYScroll, moveFlag: false }));
+          socket.send(JSON.stringify({ scroll: true, scrollY: relativeYScroll, moveFlag: false, allowedDistance: allowedDistance }));
         } else {
-          socket.send(JSON.stringify({ x: relativeXClick, y: relativeYClick, click: click_flag, right_click: right_click_flag, scroll: false, moveFlag: move_flag }));
+          socket.send(JSON.stringify({ x: relativeXClick, y: relativeYClick, click: click_flag, right_click: right_click_flag, scroll: false, moveFlag: move_flag, allowedDistance: allowedDistance}));
         }
         prev_abs_x = absoluteXClick;
         prev_abs_y = absoluteYClick;
@@ -286,25 +298,7 @@ hands.onResults((results) => {
   }
 });
 
-document.addEventListener('DOMContentLoaded', () => {
-  
-  const themeToggler = document.getElementById('theme-toggler');
-  themeToggler.selected = true;
-  // Загружаем сохраненную тему из localStorage
-  const savedTheme = localStorage.getItem('theme');
-    document.body.classList.add('dark-theme');
-    themeToggler.selected = true;
-  document.body.classList.add('dark-theme');
-  localStorage.setItem('theme', 'dark');
 
-  // Переключаем тему при изменении состояния переключателя
-// themeToggler.addEventListener('change', () => {
-//   if (themeToggler.selected) {
-//     document.body.classList.add('dark-theme');
-//     localStorage.setItem('theme', 'dark');
-//   } else {
-//     document.body.classList.remove('dark-theme');
-//     localStorage.setItem('theme', 'light');
-//   }
-// });
-});
+const themeToggler = document.getElementById('theme-toggler');
+themeToggler.selected = true;
+document.body.classList.add('dark-theme');
