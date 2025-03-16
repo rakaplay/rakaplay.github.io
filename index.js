@@ -175,9 +175,9 @@ hands.onResults((results) => {
     const relativeYScroll = indexFinger.y;
     const absoluteXScroll = relativeXScroll * window.innerWidth;
     const absoluteYScroll = relativeYScroll * window.innerHeight;
-
-    let scrollFlag = false;
     let right_click_flag = false; 
+    let scrollFlag = false;
+
     if (scrollMiddleFinger && indexFinger) {
       const scrollDistance = Math.hypot(
         (scrollMiddleFinger.x - scrollIndexFinger.x) * canvas_element.width,
@@ -185,18 +185,13 @@ hands.onResults((results) => {
       );
       if (scrollDistance < 20) {
         scrollFlag = true;
-        scrollPointer.style.transform = `translate(${absoluteXClick - scrollPointer.offsetWidth / 2}px, ${absoluteYClick - scrollPointer.offsetHeight / 2}px)`;
-        scrollPointer.style.display = "block";
         status.innerText = 'Рука распознана; распознан скролл';
       } else {
         scrollFlag = false;
         status.innerText = 'Рука распознана; жестов не обнаружено';
-        scrollPointer.style.display = "none";
       }
-    } else {
-      pointer.style.display = "none";
-    }
-
+    } 
+    console.log(scrollMiddleFinger)
     let click_flag = false;
     let move_flag = false;
     if (indexFinger && thumb) {
@@ -239,9 +234,15 @@ hands.onResults((results) => {
     if (socket.readyState === WebSocket.OPEN) {
       if (!prev_abs_x || Math.abs(absoluteXClick - prev_abs_x) > threshold || Math.abs(absoluteYClick - prev_abs_y) > threshold) {
         if (scrollFlag) {
-          socket.send(JSON.stringify({ scroll: true, scrollY: relativeYScroll, moveFlag: false, allowedDistance: allowedDistance }));
+          socket.send(JSON.stringify({ 
+            scroll: true, scrollY: relativeYScroll,
+             moveFlag: false, allowedDistance: allowedDistance }));
         } else {
-          socket.send(JSON.stringify({ x: relativeXClick, y: relativeYClick, click: click_flag, right_click: right_click_flag, scroll: false, moveFlag: move_flag, allowedDistance: allowedDistance}));
+          socket.send(JSON.stringify({ 
+            x: relativeXClick, y: relativeYClick, 
+            click: click_flag, right_click: right_click_flag, 
+            scroll: false, moveFlag: move_flag, allowedDistance: allowedDistance
+          }));
         }
         prev_abs_x = absoluteXClick;
         prev_abs_y = absoluteYClick;
