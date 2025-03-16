@@ -62,7 +62,7 @@ turn_on_camera.addEventListener("click", () => {
 
       pipVideo = document.createElement("video");
       pipVideo.style.display = "none";
-      pipVideo.srcObject = canvas_element.captureStream(60);
+      pipVideo.srcObject = canvas_element.captureStream(1);
       document.body.appendChild(pipVideo);
 
       pipVideo.addEventListener("loadedmetadata", () => {
@@ -102,10 +102,10 @@ pipButton.addEventListener("click", async () => {
   try {
     if (document.pictureInPictureElement) {
       await document.exitPictureInPicture();
-      pipButton.innerText = "Включить PiP";
+      pipButton.innerText = "Фоновый режим";
     } else {
       await pipVideo.requestPictureInPicture();
-      pipButton.innerText = "Выключить PiP";
+      pipButton.innerText = "Отключить фоновый режим";
     }
   } catch (error) {
     console.error("Ошибка переключения PiP:", error);
@@ -119,7 +119,7 @@ hands.setOptions({
   maxNumHands: 1,
   modelComplexity: 0,
   minDetectionConfidence: 0.8,
-  minTrackingConfidence: 0.8,
+  minTrackingConfidence: 0.5,
 });
 
 hands.onResults((results) => {
@@ -183,7 +183,7 @@ hands.onResults((results) => {
         (scrollMiddleFinger.x - scrollIndexFinger.x) * canvas_element.width,
         (scrollMiddleFinger.y - scrollIndexFinger.y) * canvas_element.height
       );
-      if (scrollDistance < 23) {
+      if (scrollDistance < 20) {
         scrollFlag = true;
         scrollPointer.style.transform = `translate(${absoluteXClick - scrollPointer.offsetWidth / 2}px, ${absoluteYClick - scrollPointer.offsetHeight / 2}px)`;
         scrollPointer.style.display = "block";
@@ -296,6 +296,12 @@ hands.onResults((results) => {
     pointer.style.display = "none";
     scrollPointer.style.display = "none";
   }
+});
+const slider = document.getElementById('work-distance');
+
+slider.addEventListener('input', function() {
+  const percent = (this.value - this.min) / (this.max - this.min) * 100;
+  this.style.background = `linear-gradient(to right, olive ${percent}%, #777777 ${percent}%)`;
 });
 
 
