@@ -43,7 +43,7 @@ let prev_abs_y = null;
 const threshold = 0;
 
 turn_on_camera.addEventListener("click", () => {
-  navigator.mediaDevices.getUserMedia({ video: { frameRate: { ideal: 30, max: 60 } } })
+  navigator.mediaDevices.getUserMedia({ video: { frameRate: { ideal: 60, max: 60 } } })
     .then((stream) => {
       video_element.srcObject = stream;
       cameraActive = true;
@@ -62,7 +62,7 @@ turn_on_camera.addEventListener("click", () => {
 
       pipVideo = document.createElement("video");
       pipVideo.style.display = "none";
-      pipVideo.srcObject = canvas_element.captureStream(1);
+      pipVideo.srcObject = canvas_element.captureStream(60);
       document.body.appendChild(pipVideo);
 
       pipVideo.addEventListener("loadedmetadata", () => {
