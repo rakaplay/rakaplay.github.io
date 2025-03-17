@@ -4,9 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
   <title>Инструкция и FAQ</title>
+  <!-- Импорты шрифтов и иконок -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined" rel="stylesheet">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=home" />
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
   <script type="importmap">
     {
       "imports": {
@@ -14,42 +17,33 @@
       }
     }
   </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
   <script type="module">
+
     import '@material/web/all.js';
     import {styles as typescaleStyles} from '@material/web/typography/md-typescale-styles.js';
     document.adoptedStyleSheets.push(typescaleStyles.styleSheet);
   </script>
+   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Noto+Emoji:wght@300..700&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&family=Onest:wght@100..900&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-
+<body class="dark-theme">
+  <div class="animated-gradient-bg"></div>
 
   <!-- Основной контент -->
-  <main>
-    <md-outlined-button onclick="window.history.back()">Назад</md-outlined-button>
+
+   
 
     <div class="card outlined_card">
       <h1 id="main_title">FAQ (ЧЗВ), часто задаваемые вопросы</h1>
     </div>
-    <div class="card filled_card">
-      <table style="width:100%;">
-        <tr>
-          <th>
-      <span style="display: flex; text-align:center; font-weight:normal">Темная тема</span>
-    </th>
-      
-    <th>
-      <md-switch selected id="theme-toggler" style="display: flex; margin: 0 70%;"></md-switch>
-    </th>  
-  </table>
-    </div>
-    </tr>
-    
+
     <!-- Меню -->
     <div class="menu">
-      <md-outlined-button href="#faq"><a href="#faq">FAQ</a></md-outlined-button>
-      <md-outlined-button href="#installation"><a href="#installation">Установка</a></md-outlined-button>
-      <md-outlined-button href="#troubleshooting"><a href="#troubleshooting">Проблемы и решения</a></md-outlined-button>
+      <button class = 'btn-style' onclick="window.history.back()">Назад</button>
     </div>
 
     <!-- FAQ карточка -->
@@ -69,7 +63,7 @@
       <div class="faq-item">
         <h2 id="q2">Как это работает?</h2>
         <div class="sentence-container">
-          <div class="card filled_card">Программа распознает жесты (щипок, управление курсором, скроллинг) и выполняет действия на компьютере.</div>
+          <div class="card filled_card">Программа распознает жесты (щипок, управление курсором, скроллинг, правая кнопка мыши) и выполняет действия на компьютере.</div>
         </div>
       </div>
       
@@ -84,7 +78,13 @@
             <div class="card filled_card"><strong>"Недощипок" (🤌)</strong> — управление курсором.</div>
           </li>
           <li>
-            <div class="card filled_card"><strong>Пальцы накрест (🤞)</strong> — скроллинг (прокрутка страницы).</div>
+            <div class="card filled_card"><strong>Приближенные друг к другу указательный и средний пальцы</strong> — скроллинг (прокрутка страницы). Надо просто перемещать руку вверх/вниз, выполняя жест.</div>
+          </li>
+          <li>
+            <div class="card filled_card"><strong>Большой + безымянный пальцы</strong> — правая кнопка мыши. </div>
+          </li>
+          <li>
+            <div class="card filled_card"><strong>Большой + мизинец</strong> — переключение между окнами. Если большой палец и мизинец соединены 2 секунды, появляется выбор окон (Alt+Tab). Повторный жест переключит окно, а если жеста не будет 2 секунды - программа "отпустит" Alt+Tab</div>
           </li>
         </ul>
       </div>
@@ -114,46 +114,54 @@
       <h1 id="installation-title">Инструкция по установке</h1>
       <h2 id="step1">Шаг 1. Запуск сервера</h2>
       <ol>
-        <li>Зайдите на <a href="https://github.com/rakaplay/pc-gesture-control/tree/releases">GitHub</a>.</li>
-        <li>Скачайте <a  href="https://github.com/rakaplay/pc-gesture-control/raw/refs/heads/releases/server-ui.exe" target="_blank">server-ui.exe и нажмите "Подключиться" в интерфейсе скачанной программы.</a></li>
-        <li>Потом откройте <a  href="https://rakaplay.github.io" target="_blank">страницу проекта (назад)</a> и разрешите доступ к камере.</li>
-        <li>Все!</li>
+        <li>
+          <div class="card filled_card">
+           Зайдите на <a href="https://github.com/rakaplay/pc-gesture-control/tree/releases">GitHub</a>. 
+          </div>
+        </li>
+        <li>
+          <div class="card filled_card">
+           Скачайте <a  href="https://github.com/rakaplay/pc-gesture-control/raw/refs/heads/releases/server-ui.exe" target="_blank">server-ui.exe и нажмите "Подключиться" в интерфейсе скачанной программы.</a>
+          </div>    
+        </li>
+        <li>
+          <div class="card filled_card">
+           Потом откройте <a  href="https://rakaplay.github.io" target="_blank">страницу проекта (назад)</a> и разрешите доступ к камере.
+          </div>
+        </li>
+        <li>
+          <div class="card filled_card">
+          Все!
+          </div>
+        </li>
       </ol>
     
     </div>
 
     <!-- Карточка с проблемами и решениями (аналогично) -->
     <div class="card outlined_card" id="troubleshooting">
+
       <h1 id="troubleshooting-title">Проблемы и решения</h1>
       <h2 id="issue1">Трудности с распознаванием жестов</h2>
+      <div class="card filled_card">
       <p>Иногда система путает части лица с рукой или реагирует на чужие руки. Убедитесь, что ваша рука хорошо освещена и находится на нужном расстоянии от камеры.</p>
+      </div>
 
       <h2 id="issue2">Медленный отклик</h2>
+      <div class="card filled_card">
       <p>Инференс работает быстро, но если FPS слишком низкий, попробуйте уменьшить разрешение камеры или нагрузку на GPU.</p>
+      </div>
 
       <h2 id="issue3">Отсутствие выбора активной руки</h2>
+      <div class="card filled_card">
       <p>В текущей версии нельзя выбрать активную руку. Это будет добавлено в будущих обновлениях.</p>
+      </div>
     </div>
-  </main>
 
   <footer>
     © Права (не) защищены. Пж не воруйте 👉👈
   </footer>
 
-  <script>
-    
-    // Добавляем якорь к заголовкам с id
-    document.addEventListener('DOMContentLoaded', () => {
-      document.querySelectorAll('h1[id], h2[id], h3[id]').forEach(heading => {
-        if (!heading.querySelector('.anch')) {
-          const anchor = document.createElement('a');
-          anchor.href = `#${heading.id}`;
-          anchor.className = 'anch';
-          anchor.textContent = '#';
-          heading.appendChild(anchor);
-        }
-      });
-    });
-  </script>
+
 </body>
 </html>
