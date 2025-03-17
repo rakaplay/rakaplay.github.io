@@ -40,7 +40,7 @@ let cameraActive = false;
 
 let prev_abs_x = null;
 let prev_abs_y = null;
-const threshold = 0;
+const threshold = -1;
 
 turn_on_camera.addEventListener("click", () => {
   navigator.mediaDevices.getUserMedia({ video: { frameRate: { ideal: 60, max: 60 } } })
@@ -183,7 +183,7 @@ hands.onResults((results) => {
         (scrollMiddleFinger.x - scrollIndexFinger.x) * canvas_element.width,
         (scrollMiddleFinger.y - scrollIndexFinger.y) * canvas_element.height
       );
-      if (scrollDistance < 20) {
+      if (scrollDistance < 23) {
         scrollFlag = true;
         status.innerText = 'Рука распознана; распознан скролл';
       } else {
