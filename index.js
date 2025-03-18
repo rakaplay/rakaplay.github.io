@@ -33,7 +33,16 @@ const status = document.getElementById("status");
 const socket = new WebSocket("ws://localhost:8082");
 socket.addEventListener("open", () => console.log("Вебсокет подключён"));
 socket.addEventListener("error", (error) => console.error("Вебсокет, ошибка:", error));
-
+async function restartHands() {
+console.log("Перезапуск MediaPipe...");
+  if (!hands) {
+    hands = new Hands({locateFile: (file) => `https://cdn.jsdelivr.net/npm/@mediapipe/hands/${file}` });
+    await hands.initialize();
+  }
+}
+setInterval(() => {
+  restartHands();
+}, 3000);
 let pipVideo;
 let camera = null;
 let cameraActive = false;
@@ -112,7 +121,7 @@ pipButton.addEventListener("click", async () => {
   }
 });
 
-const hands = new Hands({
+let hands = new Hands({
   locateFile: (file) => `https://cdn.jsdelivr.net/npm/@mediapipe/hands/${file}`,
 });
 hands.setOptions({
@@ -145,7 +154,7 @@ hands.onResults((results) => {
     let relativeXClick = mainPoint.x;
     let relativeYClick = mainPoint.y;
     let allowedDistance = true;
-    console.log(mainPoint.z);
+
     
     let meterFactor = 200;
     let maxDistance = document.getElementById("work-distance").value / 100; // Переводим в метры
@@ -191,7 +200,6 @@ hands.onResults((results) => {
         status.innerText = 'Рука распознана; жестов не обнаружено';
       }
     } 
-    console.log(scrollMiddleFinger)
     let click_flag = false;
     let move_flag = false;
     if (indexFinger && thumb) {
