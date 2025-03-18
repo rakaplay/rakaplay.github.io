@@ -33,16 +33,18 @@
 </head>
 <body>
   <div class="animated-gradient-bg"></div>
-  <h1 id="anch">Распознавание</h1>
+  <h1 id="anch">На кончиках пальцев</h1>
 
-  <div id="status" style="text-align: center; margin-bottom: 10px; font-size: 1.2em; color: red;">Камера остановлена</div>
+  <div class="status-style">
+    <div id="status">Камера остановлена</div>
+  </div>
   <div class='centerer'>
 
-    <md-icon>arrow_back</md-icon>
-  </md-filled-icon-button>
+
 </div>
   <div class="card outlined_card">
     <div class="video-container">
+      <div class="there-will-be-video">Здесь должно проигрываться видео с веб-камеры при запуске</div>
       <canvas id="canvas" width="640" height="360"></canvas>
     </div>
   </div>
@@ -95,7 +97,7 @@
   <div id="pointer"></div>
   <div id="scroll_point"></div>
   <footer>
-    © Права (не) защищены. Пж не воруйте 👉👈
+    © Лугин Иван, 2025. 
   </footer>
   <video id="video" autoplay playsinline style="display: none;"></video>
   

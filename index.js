@@ -1,17 +1,4 @@
 let flipX = true;
-document.getElementById("flipX").checked = true;
-document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('h1[id], h2[id], h3[id]').forEach(heading => {
-    if (!heading.querySelector('.anch')) {
-      const anchor = document.createElement('a');
-      anchor.href = `#${heading.id}`;
-      anchor.className = 'anch';
-      anchor.textContent = '#';
-      heading.appendChild(anchor);
-    }
-  });
-});
-
 // Глобальные переменные для alt+tab
 let altTabGestureActive = false;
 let altTabGestureStartTime = null;
@@ -57,7 +44,7 @@ turn_on_camera.addEventListener("click", () => {
       video_element.srcObject = stream;
       cameraActive = true;
       status.innerText = "Ожидание руки";
-      status.style.color = "orange";
+      status.style.background = "rgba(255, 165, 0, 0.2)";
       
       turn_on_camera.disabled = true;
       turn_off_camera.disabled = false;
@@ -91,7 +78,7 @@ turn_off_camera.addEventListener("click", () => {
     camera = null;
     cameraActive = false;
     status.innerText = "Камера остановлена";
-    status.style.color = "red";
+    status.style.background = "#ff000020";
     turn_on_camera.disabled = false;
     turn_off_camera.disabled = true;
     const stream = video_element.srcObject;
@@ -138,7 +125,7 @@ hands.onResults((results) => {
   if (results.multiHandLandmarks && results.multiHandLandmarks.length > 0) {
     if (cameraActive) {
       status.innerText = "Рука распознана";
-      status.style.color = "green";
+      status.style.background = "#00800040";
     }
     const landmarks = results.multiHandLandmarks[0];
     drawConnectors(canvas_risovka, landmarks, HAND_CONNECTIONS, { color: "#44EE22", lineWidth: 4 });
@@ -300,7 +287,7 @@ hands.onResults((results) => {
   } else {
     if (cameraActive) {
       status.innerText = "Ожидание руки";
-      status.style.color = "orange";
+      status.style.background = "rgba(255, 165, 0, 0.2)";
     }
     pointer.style.display = "none";
     scrollPointer.style.display = "none";
@@ -310,7 +297,7 @@ const slider = document.getElementById('work-distance');
 
 slider.addEventListener('input', function() {
   const percent = (this.value - this.min) / (this.max - this.min) * 100;
-  this.style.background = `linear-gradient(to right, olive ${percent}%, #777777 ${percent}%)`;
+  this.style.background = `linear-gradient(to right, var(--md-sys-color-secondary) ${percent}%, lightgray ${percent}%)`;
 });
 
 

@@ -118,7 +118,7 @@ footer {
   margin-top: 40px;
 }
 :root {
-  --md-sys-color-primary: olive;
+  --md-sys-color-primary: var(--md-sys-color-primary);
   --md-sys-color-secondary: tomato; 
   --md-ref-typeface-brand: 'Manrope';
   --md-ref-typeface-plain: system-ui, sans-serif;
@@ -272,7 +272,7 @@ body.dark-theme {
   --footer-border: 1px solid #444;
 }
 .dark-theme {
-  --md-sys-color-primary: color-mix(in srgb, var(olive) 30%, rgb(0, 0, 0) 70%);
+  --md-sys-color-primary: color-mix(in srgb, var(--md-sys-color-primary) 30%, rgb(0, 0, 0) 70%);
   --md-sys-color-secondary: rgb(255, 174, 160); 
   --md-ref-typeface-brand: 'Manrope',  sans-serif;
   --md-ref-typeface-plain: 'Manrope', sans-serif;
@@ -485,7 +485,7 @@ transform: translateX(1.3em);
 -webkit-appearance: none;
 width: 150px;
 height: 5px;
-background: linear-gradient(to right, olive var(--value, 50%), lightgray var(--value, 50%));
+background: linear-gradient(to right, var(--md-sys-color-primary) var(--value, 50%), lightgray var(--value, 50%));
 outline: none;
 opacity: 0.7;
 -webkit-transition: .2s;
