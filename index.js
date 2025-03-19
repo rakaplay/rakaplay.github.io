@@ -32,7 +32,8 @@ const threshold = -1;
 turn_on_camera.addEventListener("click", () => {
   navigator.mediaDevices.getUserMedia({ video: { frameRate: { ideal: 60, max: 60 } } })
     .then((stream) => {
-      const tracks = stream.getTracks(); tracks.forEach(track => track.stop());
+      stream.getTracks()
+      .forEach(track => track.stop());
       video_element.srcObject = stream;
       cameraActive = true;
       status.innerText = "Ожидание руки";
