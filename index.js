@@ -30,7 +30,7 @@ let prev_abs_y = null;
 const threshold = -1;
 
 turn_on_camera.addEventListener("click", () => {
-  navigator.mediaDevices.getUserMedia({ video: { frameRate: { ideal: 60, max: 60 } } })
+  navigator.mediaDevices.getUserMedia({ video: { frameRate: { ideal: 30, max: 60 } } })
     .then((stream) => {
       video_element.srcObject = stream;
       cameraActive = true;
