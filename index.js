@@ -20,16 +20,7 @@ const status = document.getElementById("status");
 const socket = new WebSocket("ws://localhost:8082");
 socket.addEventListener("open", () => console.log("Вебсокет подключён"));
 socket.addEventListener("error", (error) => console.error("Вебсокет, ошибка:", error));
-async function restartHands() {
-console.log("Перезапуск MediaPipe...");
-  if (!hands) {
-    hands = new Hands({locateFile: (file) => `https://cdn.jsdelivr.net/npm/@mediapipe/hands/${file}` });
-    await hands.initialize();
-  }
-}
-setInterval(() => {
-  restartHands();
-}, 3000);
+
 let pipVideo;
 let camera = null;
 let cameraActive = false;
