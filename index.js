@@ -30,7 +30,7 @@ let prev_abs_y = null;
 const threshold = -1;
 
 turn_on_camera.addEventListener("click", () => {
-  navigator.mediaDevices.getUserMedia({ video: { frameRate: { ideal: 60, max: 60 } } })
+  navigator.mediaDevices.getUserMedia({ video: { frameRate: { ideal: 30, max: 30 } } })
     .then((stream) => {
       stream.getTracks().forEach(track => track.stop());
       video_element.srcObject = stream;
