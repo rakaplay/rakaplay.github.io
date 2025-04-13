@@ -6,6 +6,9 @@ html {
 * {
   -webkit-tap-highlight-color: transparent;
   transition: all 0.3s ease;
+  --md-sys-color-primary:  #7bafd4;
+  --md-sys-color-tertiary: #928e93;
+  --md-sys-color-secondary: #7395AE;
 }
 body {
   margin: 0;
@@ -47,7 +50,7 @@ main {
   color: #fff;
 }
 .card {
-  width: 50%;
+  width: 80%;
   padding: 25px;
   margin: 25px auto;
   border-radius: 15px;
@@ -327,43 +330,37 @@ body {
   --md-filled-button-disabled-container-color: #111; 
   --md-filled-button-disabled-label-text-color: #333; 
 }
-.animated-gradient-bg{
-position: fixed;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-z-index: -1;
-pointer-events: none;
-overflow: hidden;
-opacity: 1;
 
---background: #FFF;
---dark-bg:  radial-gradient(circle at 10% 90%, rgba(255, 65, 65, 0.189), transparent 90%),
-radial-gradient(circle at 90% 10%, rgba(0, 0, 0, 0.488), transparent 90%),
-radial-gradient(circle at 20% 80%, rgba(110, 153, 109, 0.592), transparent 90%),
-radial-gradient(circle at 20% 80%, rgba(62, 255, 165, 0.3), transparent 90%);
-background: var(--dark-bg);
+.animated-gradient-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+  opacity: 1;
+  background: none;
 }
+
 @keyframes rotate {
-0% { transform: rotate(0deg); }
-100% { transform: rotate(360deg); }
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 .animated-gradient-bg::before {
-content: "";
-position: absolute;
-width: 300%;
-height: 300%;
-top: -100%;
-left: -100%;
-opacity: 0.5;
-background: radial-gradient(circle at 0% 100%, rgb(166, 255, 163), rgb(0, 0, 0) 99%),
-            radial-gradient(circle at 90% 10%, rgb(0, 0, 0), transparent 90%),
-            radial-gradient(circle at 50% 50%, rgb(255, 255, 255), transparent 99%),
-            radial-gradient(circle at 20% 80%, rgba(0, 0, 0, 0.397), transparent 99%),
-            radial-gradient(circle at 45% 34%, rgba(0, 0, 0), transparent 100%);
-animation: rotate 20s infinite linear;
+  content: "";
+  position: absolute;
+  width: 300%;
+  height: 300%;
+  top: -100%;
+  left: -100%;
+  opacity: 1;
+  background-blend-mode: lighten;
+  background: radial-gradient(circle at 0% 100%, #fff 0%, var(--md-sys-color-tertiary) 20%, rgb(0, 0, 0) 99%),
+              radial-gradient(circle at 100% 0%, #fff 0%, var(--md-sys-color-secondary) 20%, rgb(0, 0, 0) 99%);
+  animation: rotate 10s infinite linear;
 }
 
 footer{
