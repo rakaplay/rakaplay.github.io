@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Страница управления - gest.ai</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="../static/css/main.css">
+    <link type="text/css" rel="stylesheet" href="../static/css/button.css">
+    <link type="text/css" rel="stylesheet" href="../static/css/table.css">
+    <link type="text/css" rel="stylesheet" href="../static/css/switch.css">
+    <link type="text/css" rel="stylesheet" href="../static/css/video.css">
+    <link type="text/css" rel="stylesheet" href="../static/css/icon-button.css">
+    <link type="text/css" rel="stylesheet" href="../static/css/inference.css">
+    <link type="text/css" rel="stylesheet" href="../static/css/slider-range.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"/>
+    <script src="../static/js/index.js" defer></script> <!-- Добавлен defer -->
+    <script src="../static/js/redirects.js"></script>
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <div class="inference-bg"></div>
+    <header class="top-app-bar">
+        <h1 class="top-app-bar__title">
+            Распознавание жестов
+        </h1>
+        <nav class="top-app-bar__navigation">
+            <button class="button" onclick="redirect('../index.html')">
+                Старый UI
+            </button>
+        </nav>
+
+    </header>
+    <div id="content">
+        <div class="main">
+            <div class="block block--title">
+                Страница управления
+            </div>
+
+            <div class="block">
+                <div class="video-container">
+                    <canvas id="canvas" width="640" height="0"></canvas>
+                </div>
+            </div>
+
+            <div class="block block--set1">
+                <button class = 'button button--accent active' id="turn_on_camera">Разрешить доступ к камере</button>
+                <button class = 'button active' id="turn_off_camera" disabled>Остановить камеру</button>
+                <button class = 'button active' id="pipButton" disabled>Фоновый режим</button>
+                <button class = 'button active' id="faqButton" onClick="top.location.href='faq'">FAQ</button> 
+            </div>
+
+            <div class="block set2-title">
+                Настройки
+            </div>
+
+            <div class="block block--set2">
+                <button class = 'active button checkboxbutton' data-target="flipX" id="toggleFlipXButton">
+                    Инверсия по X
+                </button>
+                <input type="checkbox" id="flipX" class="hidden" checked>
+                
+                <button class = 'active button checkboxbutton' data-target="flipY" id="toggleFlipYButton">
+                    Инверсия по Y
+                </button>
+                <input type="checkbox" id="flipY" class="hidden">
+                <div class = 'button' id="distanceControlContainer">
+                    Максимальное расстояние
+                    <input type="range" class="slide" min="10" max="200" value="100" id="work-distance">
+                </div>
+            </div>
+            <button class = 'active button checkboxbutton button--outline minim'>
+                Свернуть
+            </button>
+
+            <div class="block block--set3 hidden">
+                <button class="active checkboxbutton icon-button icon-button--text" id="set3-flipX">
+                    X
+                </button>
+                <button class="active checkboxbutton icon-button icon-button--text" id="set3-flipY">
+                    Y
+                </button>
+                <div class="checkboxbutton icon-button expanded" id="set3-distance-container">
+                    <input type="range" class="slide" min="10" max="200" value="100" id="set3-work-distance">
+                </div>
+                <button class="active checkboxbutton icon-button" id="set3-turn_on_camera">
+                    <span class="material-symbols-outlined">
+                        videocam
+                    </span>
+                </button>
+                <button class="active checkboxbutton icon-button" id="set3-turn_off_camera">
+                    <span class="material-symbols-outlined">
+                        no_photography
+                    </span>
+                </button>
+                <button class="active checkboxbutton icon-button" id="set3-pipButton">
+                    <span class="material-symbols-outlined">
+                        picture_in_picture_alt
+                    </span>
+                </button>
+                <button class="active checkboxbutton icon-button" id="set3-faq">
+                    <span class="material-symbols-outlined">
+                        quiz
+                    </span>
+                </button>
+                <button class = 'active button checkboxbutton button--outline maximize'>
+                    Развернуть все
+                </button>
+            </div>
+        </div>
+    </div>
+    <script src="../static/js/inference.js"></script>
+    <video id="video" autoplay playsinline style="display: none;"></video>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
+    <script src="../static/js/main-inference.js"></script>
+</body>
+</html>

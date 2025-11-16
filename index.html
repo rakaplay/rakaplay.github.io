@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <title>Распознавание руки</title>
+  <title>Распознавание жестов</title>
   
   <!-- Импорты шрифтов и иконок -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
@@ -30,8 +30,10 @@
   </script>
    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Noto+Emoji:wght@300..700&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&family=Onest:wght@100..900&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <script src="./static/js/redirects.js"></script>
 </head>
-<body>
+<body id="content">
+  
   <div class="animated-gradient-bg"></div>
   <h1 id="anch">На кончиках пальцев</h1>
 
@@ -73,7 +75,7 @@
      
     <div class="card filled_card beautify-content setting-item">
     Инверсия положение курсора, по оси X
-     <!-- <md-switch selected id="flipX"></md-switch>-->
+     
      <label class="switch" >
       <input type="checkbox" id="flipX" checked>
       <span class="slider"></span>
@@ -90,6 +92,7 @@
     Регулировать максимальную дальность распознавания (метры)<br>
     <input  type="range"  class="slide" min="10" max="200" value="100" id="work-distance">
   </div>
+  <button class= 'btn-style' onclick="redirect('./templates/newindex.html')">Новый UI</button>
   
 </div>
   </h1>
