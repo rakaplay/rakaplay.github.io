@@ -1,3 +1,5 @@
+// Чтобы код был чище, я воспользовался нейросетями.
+
 document.addEventListener('DOMContentLoaded', () => {
     const checkboxButtons = document.querySelectorAll('.checkboxbutton');
   

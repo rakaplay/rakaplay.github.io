@@ -234,7 +234,7 @@ hands.onResults((results) => {
           altTabGestureActive = true;
         }
       } else {
-        // Если жест возобновлён после кратковременного отсутствия – выбираем следующее окно
+        // Если жест возобновлён после кратковременного отсутствия - выбираем следующее окно
         if (!altTabWasDetected) {
           socket.send(JSON.stringify({ altTab: "next" }));
         }
